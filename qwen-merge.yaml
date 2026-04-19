@@ -1,0 +1,77 @@
+slices:
+  # Early layers - abliterated Qwopus boosted
+  - sources:
+      - model: huihui-ai/Huihui-Qwopus3.5-27B-v3-abliterated
+        layer_range: [0, 32]
+        parameters:
+          weight: 0.48
+      - model: tvall43/Qwen3.6-35B-A3B-heretic
+        layer_range: [0, 40]
+        parameters:
+          weight: 0.32
+      - model: huihui-ai/Huihui-Qwen3-Coder-Next-abliterated
+        layer_range: [0, 32]
+        parameters:
+          weight: 0.20
+      - model: Johnblick187/tweakbot-lora-running
+        adapter: true
+        parameters:
+          weight: 0.25
+    merge_method: slerp
+    base_model: tvall43/Qwen3.6-35B-A3B-heretic
+    parameters:
+      t: 0.55
+
+  # Middle layers
+  - sources:
+      - model: huihui-ai/Huihui-Qwopus3.5-27B-v3-abliterated
+        layer_range: [0, 32]
+        parameters:
+          weight: 0.40
+      - model: tvall43/Qwen3.6-35B-A3B-heretic
+        layer_range: [12, 40]
+        parameters:
+          weight: 0.28
+      - model: huihui-ai/Huihui-Qwen3-Coder-Next-abliterated
+        layer_range: [12, 40]
+        parameters:
+          weight: 0.32
+      - model: Johnblick187/tweakbot-lora-running
+        adapter: true
+        parameters:
+          weight: 0.25
+    merge_method: slerp
+    base_model: tvall43/Qwen3.6-35B-A3B-heretic
+    parameters:
+      t: 0.50
+
+  # Deeper layers - heavy Coder Next boost
+  - sources:
+      - model: huihui-ai/Huihui-Qwopus3.5-27B-v3-abliterated
+        layer_range: [0, 32]
+        parameters:
+          weight: 0.30
+      - model: tvall43/Qwen3.6-35B-A3B-heretic
+        layer_range: [28, 40]
+        parameters:
+          weight: 0.22
+      - model: huihui-ai/Huihui-Qwen3-Coder-Next-abliterated
+        layer_range: [28, 48]
+        parameters:
+          weight: 0.48
+      - model: Johnblick187/tweakbot-lora-running
+        adapter: true
+        parameters:
+          weight: 0.25
+    merge_method: slerp
+    base_model: tvall43/Qwen3.6-35B-A3B-heretic
+    parameters:
+      t: 0.45
+
+  # Passthrough for 8 extra Coder Next layers (no dropping)
+  - sources:
+      - model: huihui-ai/Huihui-Qwen3-Coder-Next-abliterated
+        layer_range: [32, 48]
+    merge_method: passthrough
+
+dtype: bfloat16
