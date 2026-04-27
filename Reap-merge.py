@@ -3,10 +3,10 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import gc
 import os
 
-QWOPUS_ID = "huihui-ai/Huihui-Qwen3.5-27B-Claude-4.6-Opus-abliterated"
-HERETIC_ID = "Youssofal/Qwen3.6-35B-A3B-Abliterated-Heretic-BF16"
-CODER_ID = "lovedheart/Qwen3-Coder-Next-REAP-40B-A3B"
-OUTPUT_PATH = "/content/drive/MyDrive/tweakbot-v2-trohr"
+3.5_ID = "DavidAU/Qwen3.5-40B-Claude-4.5-Opus-High-Reasoning-Thinking"
+3.6_ID = "samuelcardillo/Carnice-Qwen3.6-MoE-35B-A3B"
+CODER_ID = "Johnblick187/Qwen3-Coder-Next-Claude-Opus-4.6-Reasoning-Distilled-REAM-256E-40B-A3B"
+OUTPUT_PATH = 
 
 CODER_OFFSET = 8
 
