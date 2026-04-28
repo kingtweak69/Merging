@@ -1,5 +1,5 @@
 # ================== INSTALL ==================
-!pip install -U safetensors huggingface_hub
+!pip install -U transformers -U safetensors huggingface_hub
 
 # ================== SETUP ==================
 import os, json, torch, gc
