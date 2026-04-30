@@ -3,20 +3,17 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import gc
 import os
 
-BASE_ID = "Qwen/Qwen3.6-35B-A3B"
-CODER_ID = "lovedheart/Qwen3-Coder-Next-REAP-40B-A3B"
-OUTPUT_PATH = "/content/drive/MyDrive/tweakbot-test-3way-clean"
-
-CODER_OFFSET = 8
-
+BASE_ID = "llmfan46/Qwen3.6-35B-A3B-uncensored-heretic"
+CODER_ID = "DavidAU/Qwen3.5-35B-A3B-HighIQ-Prototype-II"
+OUTPUT_PATH = "/workspace/qwen-merge"
 
 def get_weights(layer_idx):
     if layer_idx < 14:
-        return (0.40, 0.60)
+        return (0.65, 0.35)
     elif layer_idx < 28:
-        return (0.35, 0.65)
+        return (0.70, 0.30)
     else:
-        return (0.30, 0.70)
+        return (0.75, 0.25)
 
 
 print("Loading Qwen3.6 base (unabliterated)…")
