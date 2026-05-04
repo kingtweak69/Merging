@@ -3,9 +3,9 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import gc
 import os
 
-3.5_ID = "DavidAU/Qwen3.5-40B-Claude-4.5-Opus-High-Reasoning-Thinking"
-3.6_ID = "samuelcardillo/Carnice-Qwen3.6-MoE-35B-A3B"
-CODER_ID = "Johnblick187/Qwen3-Coder-Next-Claude-Opus-4.6-Reasoning-Distilled-REAM-256E-40B-A3B"
+MODEL_A = "DavidAU/Qwen3.5-40B-Claude-4.5-Opus-High-Reasoning-Thinking"
+MODEL_B = "samuelcardillo/Carnice-Qwen3.6-MoE-35B-A3B"
+MODEL_C = "Johnblick187/Qwen3-Coder-Next-Claude-Opus-4.6-Reasoning-Distilled-REAM-256E-40B-A3B"
 OUTPUT_PATH = 
 
 CODER_OFFSET = 8
@@ -18,27 +18,27 @@ def get_weights(layer_idx):
     else:
         return (0.30, 0.22, 0.48)
 
-print("Loading Qwopus...")
+print("Loading MODEL_A...")
 model_a = AutoModelForCausalLM.from_pretrained(
-    QWOPUS_ID,
+    MODEL_A,
     torch_dtype=torch.bfloat16,
     device_map="cpu",
     trust_remote_code=True,
     low_cpu_mem_usage=True,
 )
 
-print("Loading Heretic 3.6...")
+print("Loading MODEL_B...")
 model_b = AutoModelForCausalLM.from_pretrained(
-    HERETIC_ID,
+    MODEL_B,
     torch_dtype=torch.bfloat16,
     device_map="cpu",
     trust_remote_code=True,
     low_cpu_mem_usage=True,
 )
 
-print("Loading trohrbaugh Coder-Next heretic...")
+print("Loading MODEL_C...")
 model_c = AutoModelForCausalLM.from_pretrained(
-    CODER_ID,
+    MODEL_C,
     torch_dtype=torch.bfloat16,
     device_map="cpu",
     trust_remote_code=True,
