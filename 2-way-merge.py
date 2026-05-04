@@ -3,8 +3,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 import gc
 import os
 
-BASE_ID = "llmfan46/Qwen3.6-35B-A3B-uncensored-heretic"
-CODER_ID = "DavidAU/Qwen3.5-35B-A3B-HighIQ-Prototype-II"
+MODEL_A = "llmfan46/Qwen3.6-35B-A3B-uncensored-heretic"
+MODEL_B = "DavidAU/Qwen3.5-35B-A3B-HighIQ-Prototype-II"
 OUTPUT_PATH = "/workspace/qwen-merge"
 
 def get_weights(layer_idx):
@@ -16,7 +16,7 @@ def get_weights(layer_idx):
         return (0.75, 0.25)
 
 
-print("Loading Qwen3.6 base (unabliterated)…")
+print("Loading MODEL_A…")
 model_a = AutoModelForCausalLM.from_pretrained(
     BASE_ID,
     torch_dtype=torch.bfloat16,
@@ -25,7 +25,7 @@ model_a = AutoModelForCausalLM.from_pretrained(
     low_cpu_mem_usage=True,
 )
 
-print("Loading REAP Coder-Next…")
+print("Loading MODEL_B…")
 model_b = AutoModelForCausalLM.from_pretrained(
     CODER_ID,
     torch_dtype=torch.bfloat16,
